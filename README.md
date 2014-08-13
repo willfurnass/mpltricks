@@ -1,6 +1,8 @@
 mpltricks
 =========
 
+Matplotlib helper functions.
+
 ### tick\_skip(ax, keep\_every=2, x\_or\_y='y', min\_cur_\lines=4)
 
 Reduce the number of ticks on a given matplotlib Axes object
