@@ -63,3 +63,14 @@ def subplot_ids(axes, x_rel=0.9, y_rel=0.9):
         y = ((ax.get_ylim()[1] - ax.get_ylim()[0]) * y_rel) + ax.get_ylim()[0]
         ax.text(x, y, "({})".format(_id),
                 bbox=dict(facecolor='white', alpha=0.5, edgecolor='white'))
+
+def grey_line_gradient(ax):
+    """Set color of first Line on Axes to black, last Line to 2/3 to white and 
+    interpolate between when colouring the other lines.
+
+    Arguments:
+    ax -- matplotlib.axes.Axes object
+    """
+    n_lines = len(ax.lines)
+    for line_idx, line in enumerate(ax.lines):
+        line.set_color('{}'.format(line_idx / (1.5 * n_lines)))
