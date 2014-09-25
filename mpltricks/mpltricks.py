@@ -57,15 +57,20 @@ def subplot_ids(axes, x_rel=0.9, y_rel=0.9):
     x_rel -- Relative position of the alpha identifier w.r.t. the x axis
     y_rel -- Relative position of the alpha identifier w.r.t. the y axis
 
+    NB Axes where the label_position is 'top' are ignored
+    to prevent subplots with secondary axes from being labelled twice.
+
     """
     for ax, _id in zip(axes, cycle(string.ascii_lowercase)):
+        if ax.xaxis.get_label_position() == 'top':
+            continue
         x = ((ax.get_xlim()[1] - ax.get_xlim()[0]) * x_rel) + ax.get_xlim()[0]
         y = ((ax.get_ylim()[1] - ax.get_ylim()[0]) * y_rel) + ax.get_ylim()[0]
         ax.text(x, y, "({})".format(_id),
                 bbox=dict(facecolor='white', alpha=0.5, edgecolor='white'))
 
 def grey_line_gradient(ax):
-    """Set color of first Line on Axes to black, last Line to 2/3 to white and 
+    """Set color of first Line on Axes to black, last Line to 2/3 to white and
     interpolate between when colouring the other lines.
 
     Arguments:
