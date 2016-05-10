@@ -69,6 +69,7 @@ def subplot_ids(axes, x_rel=0.9, y_rel=0.9):
         ax.text(x, y, "({})".format(_id),
                 bbox=dict(facecolor='white', alpha=0.5, edgecolor='white'))
 
+
 def grey_line_gradient(ax):
     """Set color of first Line on Axes to black, last Line to 2/3 to white and
     interpolate between when colouring the other lines.
