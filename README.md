@@ -1,30 +1,53 @@
-mpltricks
-=========
+# mpltricks
 
-Matplotlib helper functions.
+A number of Matplotlib helper functions.
 
-### tick\_skip(ax, keep\_every=2, x\_or\_y='y', min\_cur_\lines=4)
 
-Reduce the number of ticks on a given matplotlib Axes object
+### Reduce the number of ticks on a given matplotlib `Axes` object.
 
- * ax -- matplotlib.axes.Axes object
- * keep\_every -- keep one in this many ticks e.g. set to 3 to reduce the number of ticks by 2/3
- * x\_or\_y -- can be 'x' or 'y'; reduces the number of ticks on the corresponding axis
- * min\_cur\_lines -- only reduce the number of ticks if the total number to start with is more than this
+```python
+tick_skip(ax, keep_every=2, x_or\_y='y', min_cur_lines=4)
+```
 
-### line\_style\_cycle(ax, line\_styles=('-', '--',  '-.', ':'))
+* `ax`: `matplotlib.axes.Axes` object
+* `keep_every`: keep one in this many ticks e.g. set to `3` to reduce the number of ticks by 2/3
+* `x_or_y`: can be `'x'` or `'y'`; reduces the number of ticks on the corresponding axis
+* `min_cur_lines`: only reduce the number of ticks if the total number to start with is more than this
 
-Update the style of all lines in a matplotlib Axes in a round-robin
-fashion. If line\_styles contains four elements but ax has five Lines associated with
-it then the first and fifth lines will have the same style.
 
- * ax -- matplotlib.axes.Axes object
- * line\_styles -- the list of matplotlib line styles that are cycled through
+### Update the style of all lines in a matplotlib `Axes` in a round-robin fashion.
 
-### subplot\_ids(axes, x\_rel=0.9, y\_rel=0.9)
+If `line_styles` contains four elements but ax has five Lines associated with it then the first and fifth lines will have the same style.  
 
-Annotate each of several matplotlib Axes with an alpha identifier.  e.g. Draw an '(a)' label on the first Axes object, a '(b)' on the second etc.
+```python
+line_style_cycle(ax, line_styles=('-', '--',  '-.', ':'))
+```
 
- * axes -- An enumerable collection of matplotlib.axes.Axes objects
- * x\_rel -- Relative position of the alpha identifier w.r.t. the x axis
- * y\_rel -- Relative position of the alpha identifier w.r.t. the y axis
+* `ax`: `matplotlib.axes.Axes` object
+* `line_styles`: the list of matplotlib line styles that are cycled through
+
+
+### Annotate each of several matplotlib `Axes` with an alpha identifier.  
+
+E.g. Draw an *(a)* label on the first `Axes` object, a *(b)* on the second etc.  
+
+```python
+subplot_ids(axes, x_rel=0.9, y_rel=0.9)
+```
+
+* `axes`: An enumerable collection of `matplotlib.axes.Axes` objects
+* `x_rel`: Relative position of the alpha identifier w.r.t. the x axis
+* `y_rel`: Relative position of the alpha identifier w.r.t. the y axis
+
+NB `Axes` where the `label_position` is `'top'` are ignored to prevent subplots with secondary axes from being labelled twice.
+
+
+### Naievely change colours of lines in line plot to shades of grey
+
+Set color of first `Line` on `Axes` to black, last `Line` to 2/3 to white and interpolate between when colouring the other lines.
+
+```python
+grey_line_gradient(ax)
+```
+
+* `ax`: `matplotlib.axes.Axes` object
